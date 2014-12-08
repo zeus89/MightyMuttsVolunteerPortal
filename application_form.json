@@ -1,0 +1,83 @@
+{
+	form: {
+		sections: [
+			{
+				title: 'Volunteer Profile',
+				fields: [
+					{
+						name: 'Name',
+						type: 'text'
+					},{
+						name: 'Are you 18 or older?',
+						type: 'choice',
+						choices: [
+							{
+								name: 'YES',
+								value: 'yes'
+							},{
+								name: 'NO',
+								value: 'no',
+								fields: [
+									{
+										name: 'Do you have parental permission to volunteer?',
+										type: 'choice',
+										choices: [
+											{
+												name: 'YES',
+												value: 'yes'
+											},{
+												name: 'YES',
+												value: 'no'
+											}
+										]
+									}
+								]
+							}
+						]
+					},{
+						name: 'Street Address',
+						type: 'text'
+					},{
+						name: 'E-mail Address',
+						type: 'text'
+					},{
+						name: 'City',
+						type: 'text'
+					},{
+						name: 'State',
+						type: 'text'
+					},{
+						name: 'Zip',
+						type: 'text'
+					},{
+						name: 'Home telephone',
+						type: 'tel'
+					},{
+						name: 'Daytime telephone',
+						type: 'tel'
+					},{
+						name: 'Work phone number',
+						type: 'tel'
+					}
+				]
+			},{
+				title: 'How did you hear of the Volunteer Programs?',
+				fields: [
+					{
+						name: 'If you are here through a volunteer program, please indicate the following:',
+						type: 'label'
+					},{
+						name: 'Agency',
+						type: 'text'
+					},{
+						name: 'Address',
+						type: 'text'
+					},{
+						name: 'Name of Contact Person',
+						type: 'text'
+					}
+				]
+			}
+		]
+	}
+}
