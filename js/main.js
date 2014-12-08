@@ -19,7 +19,7 @@ requirejs.config({
     }
 });
 
-require(["jquery", "jquery.bootstrap", "backbone", "router"], function($, boostrap, Backbone, router) {
+require(["jquery", "jquery.bootstrap", "backbone", "router", "application_layout_helper"], function($, boostrap, Backbone, router) {
 
 		var appRouter = new router();
 

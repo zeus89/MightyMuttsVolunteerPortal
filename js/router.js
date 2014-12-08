@@ -1,14 +1,29 @@
 define(function (require){
-	var Backbone = require('backbone');
-
-	var updateActiveState = function(navId){
-  	$(".nav").find(".active").removeClass("active");
-  	$('.nav #' + navId).addClass("active");
-	};
+	var Backbone = require('backbone'),
+			AnnouncementsController = require('controllers/announcements.controller'),
+			ContactsController = require('controllers/contacts.controller'),
+			ShiftsController = require('controllers/shifts.controller'),
+			ResourcesController = require('controllers/resources.controller'),
+			LoginController = require('controllers/login.controller'),
+			LogoutController = require('controllers/logout.controller'),
+			SignupController = require('controllers/signup.controller');
 
 	var AppRouter = Backbone.Router.extend({
 
+		_currentController: null,
+
+		_updateCurrentController: function(currentController){
+
+			if(this._currentController){
+	  		this._currentController.destroy();
+	  	}
+
+			this._currentController = currentController;
+		},
+
 		routes: {
+			"home": 					"announcements",
+			"announcements":  "announcements", 
 	    "contacts":      	"contacts",    // #contacts
 	    "shifts":        	"shifts",  // #shifts
 	    "resources": 			"resources",   // #resources
@@ -17,33 +32,53 @@ define(function (require){
 	    "logout":         "logout"
 	  },
 
-  	contacts: function() {
-	    console.log("contacts router");
-	    updateActiveState("contacts");
+	  announcements: function(){
+
+	  	this._updateCurrentController(AnnouncementsController);
+
+	  	AnnouncementsController.start();
 	  },
 
+  	contacts: function(){
+
+  		this._updateCurrentController(AnnouncementsController);
+
+  		ContactsController.start();
+  	},
+
 	  shifts: function(){
-			console.log("shifts router");
-			updateActiveState("shifts");
+
+	  	this._updateCurrentController(ShiftsController);
+
+			ShiftsController.start();
 	  },
 
 	  resources: function(){
-	  	console.log("resources router");
-	  	updateActiveState("resources");
+
+	  	this._updateCurrentController(ResourcesController);
+
+	  	ResourcesController.start();
 	  },
 
 	  login: function(){
-	  	console.log("login router");
-	  	updateActiveState("login");
+
+	  	this._updateCurrentController(LoginController);
+
+	  	LoginController.start();
 	  },
 
 	  signup: function(){
-	  	console.log("signup router");
-	  	updateActiveState("signup");
+
+	  	this._updateCurrentController(SignupController);
+
+	  	SignupController.start();
 	  },
 
 	  logout: function(){
-	  	console.log("logout router");
+
+	  	this._updateCurrentController(LogoutController);
+
+	  	LogoutController.start();
 	  }
 	});
 
